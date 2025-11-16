@@ -7,6 +7,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
   }
   
   .navigation a {
@@ -84,17 +85,11 @@
     background-repeat: no-repeat;
 
   }
-  p{
-    
-      position: absolute; /* 脱离文档流，不影响背景图 */
-      top: 300px; /* 自定义位置 */
-      left:50px;
-      width: 300px; /* 自定义半透明框宽度 */
-      height: 100px; /* 自定义半透明框高度 */
-      background-color: rgba(255, 255, 255, 0.3);
-      padding: 20px;
-      box-sizing: border-box; /* 让padding不撑大容器 */
-    }
+  div{
+    background-color: rgba(255, 255, 255, 0.3);
+            text-align: center;
+            border-radius: 10px;
+  }
     html.body{
       width: 100%;
       height: 100%;
@@ -102,5 +97,21 @@
       padding: 0;
 
     }
+    /* 标题艺术字样式（匹配图中金色华丽感） */
+h1 {
+  /* 核心字体：复古装饰衬线 */
+  font-family: "Cinzel Decorative", serif;
+  font-size: 56px;
+  font-weight: 900; /* 加粗增强华丽感 */
   
+  /* 金色渐变+描边，还原图中金属质感 */
+  background: linear-gradient(120deg, #FFD700, #D4AF37);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-stroke: 1px #8B4513; /* 深色描边增加立体感 */
+  -webkit-text-stroke: 1px #8B4513;
   
+  /* 装饰细节：匹配图中花纹质感 */
+  text-shadow: 3px 3px 6px rgba(139, 69, 19, 0.5); /* 复古阴影 */
+  letter-spacing: 4px; /* 拉开间距更优雅 */
+}
