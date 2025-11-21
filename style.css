@@ -150,8 +150,8 @@
             text-align: center;
             font-family: '宋体', 'SimSun', serif;
             font-size: 18px;
-            color: #e0b4b4;
-            text-shadow: 0 0 8px rgba(224, 180, 180, 0.6),
+            color: #563333;
+            text-shadow: 0 0 8px rgba(137, 6, 6, 0.6),
                          0 0 15px rgba(224, 180, 180, 0.3);
             letter-spacing: 3px;
             padding: 10px 0;
@@ -178,7 +178,7 @@
           @media (max-width: 768px) {
             .never {
               font-size: 16px;
-              bottom: 15px; /* 小屏微调底部距，仍用像素值 */
+              bottom: 10px; /* 小屏微调底部距，仍用像素值 */
               letter-spacing: 2px;
             }
           }
