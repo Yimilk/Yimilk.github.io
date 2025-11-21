@@ -42,54 +42,7 @@
     color: #007bff;
 
   }
-  .vertical-nav {
-    position: fixed;
-    top: 100px;
-    left: 20px;
-    width: 200px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    transition: all 0.3s ease; /* 添加过渡效果 */
-}
-
-/* 滚动时的样式变化 */
-body.scrolled .vertical-nav {
-    background-color: rgba(255, 255, 255, 1); /* 滚动时背景不透明 */
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* 滚动时阴影更明显 */
-    top: 20px; /* 滚动时距离顶部更近 */
-}
-
-.vertical-nav .nav-item {
-    margin-bottom: 15px;
-}
-
-.vertical-nav .nav-link {
-    color: #666;
-    text-decoration: none;
-    display: block;
-    padding: 8px 0;
-    transition: all 0.3s ease;
-}
-
-.vertical-nav .nav-link:hover {
-    color: #3498db;
-    padding-left: 10px;
-}
-
-.vertical-nav .nav-link.active {
-    color: #3498db;
-    font-weight: bold;
-    padding-left: 10px;
-}
-  /* 全局样式重置 */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+  
 
 body {
   font-family: 'Microsoft YaHei', sans-serif;
