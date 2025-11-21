@@ -64,6 +64,7 @@
           }
           hr {
             border: none;
+            width: 80%;
             height: 3px;
             background: linear-gradient(90deg, #8A3E9B, #D4A86C, #8A3E9B);
             background-size: 200% 100%;
@@ -78,7 +79,6 @@
             position: absolute;
             top: -5px;
             left: -100%;
-            width: 100%;
             height: 100%;
             background-image: 
               radial-gradient(circle at 20% 20%, rgba(212, 168, 108, 0.7) 1px, transparent 1px),

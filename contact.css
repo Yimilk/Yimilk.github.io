@@ -72,8 +72,8 @@
   }
 
   hr {
-    width: 1500px;
     border: none;
+   width: 80%;
     height: 3px;
     background: linear-gradient(90deg, #8A3E9B, #D4A86C, #8A3E9B);
     background-size: 200% 100%;
