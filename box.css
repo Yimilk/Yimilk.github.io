@@ -2,7 +2,7 @@
     text-decoration: underline;
  }
  .navigation {
-    background-color: #2a8e4fee;
+  background-color: rgba(108, 78, 26, 0.4);
     padding: 20px 20px;
     display: flex;
     justify-content: space-between;
@@ -12,7 +12,7 @@
   
   .navigation a {
     color: white;
-    background-color:#07702eee ;
+    background-color:#D4b996 ;
     text-decoration: none;
     border: none;
     border-radius: 4px;
@@ -23,7 +23,7 @@
   }
   
   .navigation a:hover {
-    color: #2a8e4fee;
+    color: #D4b996;
     background-color: #cccccc;
   }
   
@@ -144,3 +144,27 @@ p {
   text-align: center;
   margin: 10px 0;
 }
+.link-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .link-item {
+            flex: 0 0 calc(33.333% - 20px); /* 每行三个，减去gap空间 */
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        
+        .link-item a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+        
+        .link-item a:hover {
+            text-decoration: underline;
+        }

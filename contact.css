@@ -2,7 +2,7 @@
     text-decoration: underline;
  }
  .navigation {
-    background-color: #2a8e4fee;
+  background-color: rgba(108, 78, 26, 0.4);
     padding: 20px 20px;
     display: flex;
     justify-content: space-between;
@@ -12,7 +12,7 @@
   
   .navigation a {
     color: white;
-    background-color:#07702eee ;
+    background-color:#D4b996 ;
     text-decoration: none;
     border: none;
     border-radius: 4px;
@@ -23,7 +23,8 @@
   }
   
   .navigation a:hover {
-    color: #2a8e4fee;
+    color: #D4b996;
+
     background-color: #cccccc;
   }
   
@@ -44,7 +45,7 @@
   }
   
   body{
-    background:url(img/5.jpg);
+    background:url(img/01936fd65141871e4bfe29b0728347ae.jpg);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;

@@ -9,7 +9,7 @@
 
       }
       body {
-          background-image: url('img/7.jpg'); /*替换为图片路径  */
+          background-image: url(img/54ad7d82b4a4dc61bfb5344d2269afb1.jpg);
         background-size: cover; /*让图片覆盖整个背景，保持比例 */
         background-attachment: fixed;
         background-position: center;
@@ -22,7 +22,7 @@
             text-decoration: underline;
          }
          .navigation {
-            background-color: #2a8e4fee;
+            background-color: rgba(108, 78, 26, 0.4);
             padding: 20px 20px;
             display: flex;
             justify-content: space-between;
@@ -32,7 +32,7 @@
           
           .navigation a {
             color: white;
-            background-color:#07702eee ;
+            background-color:#D4b996 ;
             text-decoration: none;
             border: none;
             border-radius: 4px;
@@ -43,7 +43,7 @@
           }
           
           .navigation a:hover {
-            color: #2a8e4fee;
+            color: #D4b996;
             background-color: #cccccc;
           }
           
@@ -66,7 +66,7 @@
             border: none;
             width: 80%;
             height: 3px;
-            background: linear-gradient(90deg, #8A3E9B, #D4A86C, #8A3E9B);
+            background: linear-gradient(90deg, #f2eef3, #D4A86C, #464446);
             background-size: 200% 100%;
             animation: flow 3s linear infinite;
             position: relative;
@@ -182,6 +182,7 @@
               letter-spacing: 2px;
             }
           }
+          
     
 
     
