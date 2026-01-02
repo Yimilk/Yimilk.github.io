@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>生物专业资源导航</title>
+    <link rel="stylesheet" href="动物医学.css">
     <style>
+        
         * {
             margin: 0;
             padding: 0;
@@ -391,6 +393,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- 加载提示 -->
     <div class="loading-overlay" id="loadingOverlay">
@@ -730,6 +733,7 @@
                 </div>
             </div>
         </div>
+        
 
         <!-- 页脚 -->
         <footer class="footer">
@@ -737,6 +741,14 @@
             <p>持续更新中，欢迎推荐优质资源🎉</p>
         </footer>
     </div>
+    <!-- 替换原来的 <p><a href="#"></a>神秘链接</p> 为以下代码 -->
+<div class="mystery-container">
+    <a href="#" class="mystery-link-enhanced" id="mysteryLink" title="点击我有惊喜">
+        <div class="mystery-icon">?</div>
+        <span class="mystery-text">神秘链接</span>
+    </a>
+</div>
+    
     <!-- 在现有的彩蛋内容中添加以下代码 -->
 
 <!-- 新彩蛋：快速点击触发的浮动彩蛋
@@ -853,7 +865,7 @@ floatingEggStyle.textContent = `
  <!-- document.head.appendChild(floatingEggStyle);
  </script> -->
 
-     神秘链接
+     
      <div class="mystery-link" id="mysteryLink" title="点击我有惊喜"></div>
 
      <script>

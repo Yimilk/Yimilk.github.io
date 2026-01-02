@@ -1,0 +1,103 @@
+/* 神秘链接增强样式 */
+.mystery-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.mystery-link-enhanced {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+    padding: 12px 25px;
+    border-radius: 30px;
+    background: rgba(76, 175, 80, 0.15);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 999;
+}
+
+.mystery-link-enhanced:hover {
+    background: rgba(76, 175, 80, 0.25);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(76, 175, 80, 0.2);
+}
+
+.mystery-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4CAF50, #2E7D32);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.mystery-link-enhanced:hover .mystery-icon {
+    transform: rotate(15deg) scale(1.1);
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.5);
+}
+
+.mystery-text {
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.mystery-link-enhanced:hover .mystery-text {
+    color: #4CAF50;
+    letter-spacing: 1px;
+}
+
+/* 添加悬停时的波纹效果 */
+.mystery-link-enhanced::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(76, 175, 80, 0.2);
+    transition: width 0.6s, height 0.6s;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.mystery-link-enhanced:hover::before {
+    width: 200%;
+    height: 200%;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .mystery-container {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    
+    .mystery-link-enhanced {
+        padding: 10px 20px;
+        gap: 10px;
+    }
+    
+    .mystery-icon {
+        width: 25px;
+        height: 25px;
+        font-size: 14px;
+    }
+    
+    .mystery-text {
+        font-size: 14px;
+    }
+}
