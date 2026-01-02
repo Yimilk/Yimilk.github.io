@@ -65,106 +65,273 @@ body::before {
   background-color: rgba(255, 255, 255, 0.8);
   z-index: -1;
 }
+.navigation a:hover{
+  text-decoration: underline;
+}
+.navigation {
+  background-color: rgba(108, 78, 26, 0.4);
+  padding: 20px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+
+.navigation a {
+  color: white;
+  background-color:#D4b996 ;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 15px;
+  margin-right: 20px;
+  font-size: 16px;
+  transition: 0.5s;
+}
+
+.navigation a:hover {
+  color: #D4b996;
+  background-color: #cccccc;
+}
+
+.loginBtn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.loginBtn:hover {
+  background-color: aliceblue;
+  color: #007bff;
+}
+
+body {
+  font-family: 'Microsoft YaHei', sans-serif;
+  color: #333;
+  line-height: 1.6;
+  background-image: url('img/good.jpg'); /* 替换为你的背景图片路径 */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* 半透明遮罩层 */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: -1;
+}
+
+/* 容器样式 - 使用flexbox布局 */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  /* //间隔 */
+  padding: 20px;
+  /* //添加内边距 */
+  justify-content: flex-start;
+  /* //居中对齐 */
+}
+
+/* 盒子样式 */
+.box {
+  flex: 1 1 calc(33.333% - 20px); /* 每行最多3个盒子，减去gap空间 */
+  min-width: 250px; /* 最小宽度确保内容可读 */
+  padding: 20px;
+  margin: 10px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 悬停效果 */
+.box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* 盒子装饰性边框 */
+.box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #D4b996, #a89570, #D4b996);
+}
 
 /* 标题样式 */
-h1 {
+.box h1 {
+  color: #6c4e1a;
   text-align: center;
-  margin: 30px 0;
-  color: #2c3e50;
-  font-size: 28px;
-  background-color: rgba(255, 255, 255, 0.7);
-  padding: 10px;
-  border-radius: 5px;
-  display: inline-block;
-  margin-left: 50%;
-  transform: translateX(-50%);
+  margin: 10px 0 15px 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 1.4em;
 }
 
-/* 导航样式 */
-nav {
-  text-align: center;
-  margin: 20px 0;
+/* 导航链接样式 */
+.box nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-nav a {
-  display: inline-block;
+.box nav a {
+  display: block;
   padding: 10px 15px;
-  margin: 5px;
-  background-color: #3498db;
-  color: white;
+  color: #6c4e1a;
   text-decoration: none;
-  border-radius: 5px;
+  background-color: rgba(212, 185, 150, 0.1);
+  border-radius: 6px;
   transition: all 0.3s ease;
+  border-left: 3px solid #D4b996;
 }
 
-nav a:hover {
-  background-color: #2980b9;
-  transform: translateY(-2px);
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+.box nav a:hover {
+  background-color: #D4b996;
+  color: white;
+  transform: translateX(5px);
 }
 
-/* 分割线样式 */
-hr {
+/* 分隔线样式 */
+.box hr {
   border: none;
-  border-top: 1px solid #eee;
-  margin: 20px 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #ccc, transparent);
+  margin: 15px 0;
 }
 
-/* 响应式布局 */
-@media (max-width: 768px) {
-  nav a {
-      display: block;
-      width: 80%;
-      margin: 5px auto;
-  }
+/* 音频控件样式 */
+.box nav p {
+  margin: 10px 0 5px;
+  color: #6c4e1a;
+  font-weight: bold;
 }
-nav p {
-  display: inline-block;
-  padding: 10px 15px;
-  margin: 5px;
-  background-color: #3498db;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: all 0.3s ease;
-}
-nav p:hover {
-  background-color: #2980b9;
-  transform: translateY(-2px);
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-}
-@media (max-width: 768px) {
-  nav a {
-      display: block;
-      width: 80%;
-      margin: 5px auto;
-  }
-}
-p {
-  text-align: center;
+
+.box nav audio {
+  width: 100%;
   margin: 10px 0;
 }
-.link-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .link-item {
-            flex: 0 0 calc(33.333% - 20px); /* 每行三个，减去gap空间 */
-            text-align: center;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-        }
-        
-        .link-item a {
-            text-decoration: none;
-            color: #007bff;
-            font-weight: bold;
-        }
-        
-        .link-item a:hover {
-            text-decoration: underline;
-        }
+
+/* 页脚盒子样式 */
+.footer-box {
+  text-align: center;
+  padding: 30px;
+  margin: 30px 20px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+  .box {
+      flex: 1 1 calc(50% - 20px); /* 在中等屏幕上每行2个 */
+  }
+}
+
+@media (max-width: 768px) {
+  .box {
+      flex: 1 1 100%; /* 在小屏幕上每行1个 */
+  }
+  
+  .container {
+      padding: 10px;
+  }
+}
+
+/* 登录按钮在导航中的样式 */
+.loginBtn {
+  background-color: #6c4e1a;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.loginBtn:hover {
+  background-color: #D4b996;
+  color: #6c4e1a;
+}
+/* 导航链接样式 */
+.box nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 250px;  /* 限制导航区域最大高度 */
+  overflow-y: auto;   /* 垂直滚动 */
+  padding-right: 5px; /* 为滚动条留出空间 */
+}
+
+/* 滚动条样式 */
+.box nav::-webkit-scrollbar {
+  width: 8px;
+}
+
+.box nav::-webkit-scrollbar-track {
+  background: rgba(212, 185, 150, 0.2);
+  border-radius: 4px;
+}
+
+.box nav::-webkit-scrollbar-thumb {
+  background: #D4b996;
+  border-radius: 4px;
+}
+
+.box nav::-webkit-scrollbar-thumb:hover {
+  background: #a89570;
+}
+
+.box nav a {
+  display: block;
+  padding: 10px 15px;
+  color: #6c4e1a;
+  text-decoration: none;
+  background-color: rgba(212, 185, 150, 0.1);
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  border-left: 3px solid #D4b996;
+}
+
+.box nav a:hover {
+  background-color: #D4b996;
+  color: white;
+  transform: translateX(5px);
+}
+
+/* 分隔线样式 */
+.box hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #ccc, transparent);
+  margin: 15px 0;
+}
+
+/* 音频控件样式 */
+.box nav p {
+  margin: 10px 0 5px;
+  color: #6c4e1a;
+  font-weight: bold;
+}
+
+.box nav audio {
+  width: 100%;
+  margin: 10px 0;
+}

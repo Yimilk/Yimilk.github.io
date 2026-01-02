@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生物专业资源导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a2a6c, #2c3e50, #1a2a6c);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff;
+            margin-left: 20px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            margin-right: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links a:hover {
+            background: rgba(76, 175, 80, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* 主标题区域 */
+        .hero {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* 分类区域 */
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .category-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            height: fit-content;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(76, 175, 80, 0.5);
+        }
+
+        .category-icon {
+            font-size: 1.8rem;
+            margin-right: 15px;
+            color: #4CAF50;
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .links-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .link-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            border-left: 3px solid #4CAF50;
+            display: flex;
+            align-items: center;
+        }
+
+        .link-item:hover {
+            background: rgba(76, 175, 80, 0.2);
+            transform: translateX(5px);
+        }
+
+        .link-icon {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .link-text {
+            flex: 1;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px 0;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .categories {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+
+        /* 搜索框 */
+        .search-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .search-box {
+            width: 100%;
+            max-width: 500px;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+
+        .search-box::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .footer p {
+            opacity: 0.7;
+        }
+
+        /* 加载提示样式 */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            backdrop-filter: blur(5px);
+        }
+
+        .loading-content {
+            text-align: center;
+            background: rgba(30, 30, 46, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+        }
+
+        .loading-text {
+            font-size: 1.5rem;
+            color: #4CAF50;
+            margin-bottom: 20px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+
+        .skip-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+
+        .skip-option input {
+            margin: 0;
+        }
+
+        /* 淡出动画 */
+        .fade-out {
+            animation: fadeOut 0.5s ease forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        /* 隐藏类 */
+        .hidden {
+            display: none !important;
+        }
+
+        /* 彩蛋样式 */
+        .easter-egg {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: #4CAF50;
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 9999;
+            text-align: center;
+            max-width: 80%;
+            animation: popIn 0.5s ease;
+        }
+
+        @keyframes popIn {
+            0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        }
+
+        .easter-egg h3 {
+            margin-bottom: 10px;
+            color: #4CAF50;
+        }
+
+        .easter-egg p {
+            margin-bottom: 15px;
+        }
+
+        .close-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        /* 点击效果 */
+        .click-effect {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(76, 175, 80, 0.6);
+            pointer-events: none;
+            animation: ripple 0.6s linear;
+        }
+
+        @keyframes ripple {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+
+        /* 神秘链接样式 */
+        .mystery-link {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: rgba(76, 175, 80, 0.3);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 1000;
+            animation: float 3s ease-in-out infinite;
+            opacity: 0.7;
+        }
+
+        .mystery-link:hover {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .mystery-link::before {
+            content: "?";
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- 加载提示 -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="loading-text">欢迎来到动物医学领域，在这里你将接触到更加丰富的资源</div>
+            <div class="skip-option">
+                <input type="checkbox" id="neverShowAgain">
+                <label for="neverShowAgain">不再显示此提示</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主要内容 -->
+    <div class="container" id="mainContent">
+        <!-- 导航栏 -->
+        <nav class="navbar">
+            <div class="logo">生物学资源导航</div>
+            <div class="nav-links">
+                <a href="#research">研究资源</a>
+                <a href="#education">教育资源</a>
+                <a href="#databases">数据库</a>
+                <a href="#journals">期刊文献</a>
+                <a href="#veterinary">动物医学</a>
+            </div>
+        </nav>
+
+        <!-- 搜索框 -->
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="搜索生物专业相关资源...">
+        </div>
+
+        <!-- 主标题区域 -->
+        <section class="hero">
+            <h1>生物专业资源导航</h1>
+            <p>汇集生物学领域的优质资源，助力学术研究与学习</p>
+        </section>
+
+        <!-- 分类链接区域 -->
+        <div class="categories">
+            <!-- 研究资源 -->
+            <div class="category-card">
+                <div class="category-header">
+                    <div class="category-icon">🔬</div>
+                    <h2 class="category-title">研究资源</h2>
+                </div>
+                <div class="links-grid">
+                    <a href="https://www.ncbi.nlm.nih.gov/" class="link-item" target="_blank">
+                        <span class="link-icon">🔍</span>
+                        <span class="link-text">NCBI - 国家生物技术信息中心</span>
+                    </a>
+                    <a href="https://pubmed.ncbi.nlm.nih.gov/" class="link-item" target="_blank">
+                        <span class="link-icon">📚</span>
+                        <span class="link-text">PubMed - 生物医学文献数据库</span>
+                    </a>
+                    <a href="https://www.uniprot.org/" class="link-item" target="_blank">
+                        <span class="link-icon">🧬</span>
+                        <span class="link-text">UniProt - 蛋白质序列数据库</span>
+                    </a>
+                    <a href="https://www.ebi.ac.uk/" class="link-item" target="_blank">
+                        <span class="link-icon">📊</span>
+                        <span class="link-text">EBI - 欧洲生物信息研究所</span>
+                    </a>
+                    <a href="https://www.rcsb.org/" class="link-item" target="_blank">
+                        <span class="link-icon">🧫</span>
+                        <span class="link-text">RCSB PDB - 蛋白质结构数据库</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 教育资源 -->
+            <div class="category-card">
+                <div class="category-header">
+                    <div class="category-icon">🎓</div>
+                    <h2 class="category-title">教育资源</h2>
+                </div>
+                <div class="links-grid">
+                    <a href="https://www.khanacademy.org/science/biology" class="link-item" target="_blank">
+                        <span class="link-icon">🎓</span>
+                        <span class="link-text">可汗学院 - 生物学课程</span>
+                    </a>
+                    <a href="https://www.coursera.org/courses?query=biology" class="link-item" target="_blank">
+                        <span class="link-icon">💻</span>
+                        <span class="link-text">Coursera - 生物学课程</span>
+                    </a>
+                    <a href="https://ocw.mit.edu/courses/biology-and-biotechnology/" class="link-item" target="_blank">
+                        <span class="link-icon">/MIT</span>
+                        <span class="link-text">MIT开放课程 - 生物学</span>
+                    </a>
+                    <a href="https://www.bilibili.com/" class="link-item" target="_blank">
+                        <span class="link-icon">📺</span>
+                        <span class="link-text">B站 - 生物学教学视频</span>
+                    </a>
+                    <a href="https://www.nature.com/scitable/" class="link-item" target="_blank">
+                        <span class="link-icon">📖</span>
+                        <span class="link-text">Nature Scitable - 科学教育平台</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 数据库 -->
+            <div class="category-card">
+                <div class="category-header">
+                    <div class="category-icon">🗄️</div>
+                    <h2 class="category-title">专业数据库</h2>
+                </div>
+                <div class="links-grid">
+                    <a href="https://www.genome.jp/kegg/" class="link-item" target="_blank">
+                        <span class="link-icon">🧬</span>
+                        <span class="link-text">KEGG - 基因组数据库</span>
+                    </a>
+                    <a href="https://www.ensembl.org/" class="link-item" target="_blank">
+                        <span class="link-icon">🧬</span>
+                        <span class="link-text">Ensembl - 基因组浏览器</span>
+                    </a>
+                    <a href="https://www.ebi.ac.uk/interpro/" class="link-item" target="_blank">
+                        <span class="link-icon">🔍</span>
+                        <span class="link-text">InterPro - 蛋白质分类数据库</span>
+                    </a>
+                    <a href="https://www.biolegend.com/" class="link-item" target="_blank">
+                        <span class="link-icon">🔬</span>
+                        <span class="link-text">BioLegend - 生物试剂数据库</span>
+                    </a>
+                    <a href="https://www.addgene.org/" class="link-item" target="_blank">
+                        <span class="link-icon">🧬</span>
+                        <span class="link-text">Addgene - 质粒数据库</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 期刊文献 -->
+            <div class="category-card">
+                <div class="category-header">
+                    <div class="category-icon">📚</div>
+                    <h2 class="category-title">期刊文献</h2>
+                </div>
+                <div class="links-grid">
+                    <a href="https://www.nature.com/" class="link-item" target="_blank">
+                        <span class="link-icon">🔬</span>
+                        <span class="link-text">Nature - 自然期刊</span>
+                    </a>
+                    <a href="https://science.sciencemag.org/" class="link-item" target="_blank">
+                        <span class="link-icon">🔬</span>
+                        <span class="link-text">Science - 科学期刊</span>
+                    </a>
+                    <a href="https://elifesciences.org/" class="link-item" target="_blank">
+                        <span class="link-icon">🔬</span>
+                        <span class="link-text">eLife - 开放获取期刊</span>
+                    </a>
+                    <a href="https://www.cell.com/" class="link-item" target="_blank">
+                        <span class="link-icon">🔬</span>
+                        <span class="link-text">Cell - 细胞期刊</span>
+                    </a>
+                    <a href="https://www.plos.org/" class="link-item" target="_blank">
+                        <span class="link-icon">🔬</span>
+                        <span class="link-text">PLOS - 开放科学期刊</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 工具软件 -->
+            <div class="category-card">
+                <div class="category-header">
+                    <div class="category-icon">🛠️</div>
+                    <h2 class="category-title">工具软件</h2>
+                </div>
+                <div class="links-grid">
+                    <a href="https://www.bioedit.com/" class="link-item" target="_blank">
+                        <span class="link-icon">🧬</span>
+                        <span class="link-text">BioEdit - 序列分析软件</span>
+                    </a>
+                    <a href="https://www.megasoftware.net/" class="link-item" target="_blank">
+                        <span class="link-icon">🧬</span>
+                        <span class="link-text">MEGA - 进化遗传学分析</span>
+                    </a>
+                    <a href="https://www.graphpad.com/" class="link-item" target="_blank">
+                        <span class="link-icon">📊</span>
+                        <span class="link-text">GraphPad Prism - 统计分析</span>
+                    </a>
+                    <a href="https://www.r-project.org/" class="link-item" target="_blank">
+                        <span class="link-icon">📊</span>
+                        <span class="link-text">R语言 - 统计计算</span>
+                    </a>
+                    <a href="https://www.python.org/" class="link-item" target="_blank">
+                        <span class="link-icon">🐍</span>
+                        <span class="link-text">Python - 数据分析</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 学会组织 -->
+            <div class="category-card">
+                <div class="category-header">
+                    <div class="category-icon">👥</div>
+                    <h2 class="category-title">学会组织</h2>
+                </div>
+                <div class="links-grid">
+                    <a href="https://www.asbmb.org/" class="link-item" target="_blank">
+                        <span class="link-icon">👥</span>
+                        <span class="link-text">ASBMB - 美国生物化学学会</span>
+                    </a>
+                    <a href="https://www.societyforbiology.org/" class="link-item" target="_blank">
+                        <span class="link-icon">👥</span>
+                        <span class="link-text">SfB - 英国生物学会</span>
+                    </a>
+                    <a href="https://www.botany.org/" class="link-item" target="_blank">
+                        <span class="link-icon">🌿</span>
+                        <span class="link-text">Botany - 植物学学会</span>
+                    </a>
+                    <a href="https://www.zoology.org/" class="link-item" target="_blank">
+                        <span class="link-icon">🐾</span>
+                        <span class="link-text">Zoology - 动物学学会</span>
+                    </a>
+                    <a href="https://www.microbiology.org/" class="link-item" target="_blank">
+                        <span class="link-icon">🦠</span>
+                        <span class="link-text">Microbiology - 微生物学学会</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 动物医学 -->
+            <div class="category-card">
+                <div class="category-header">
+                    <div class="category-icon">🐾</div>
+                    <h2 class="category-title">动物医学</h2>
+                </div>
+                <div class="links-grid">
+                    <a href="https://www.avma.org/" class="link-item" target="_blank">
+                        <span class="link-icon">🏥</span>
+                        <span class="link-text">AVMA - 美国兽医协会</span>
+                    </a>
+                    <a href="https://www.who.int/foodsafety/areas_work/foodborne-diseases/en/" class="link-item" target="_blank">
+                        <span class="link-icon">🌍</span>
+                        <span class="link-text">WHO - 食源性疾病与人畜共患病</span>
+                    </a>
+                    <a href="https://www.merckvetmanual.com/" class="link-item" target="_blank">
+                        <span class="link-icon">📖</span>
+                        <span class="link-text">Merck兽医手册</span>
+                    </a>
+                    <a href="https://www.veterinarypartner.com/" class="link-item" target="_blank">
+                        <span class="link-icon">🏥</span>
+                        <span class="link-text">Veterinary Partner - 兽医资源</span>
+                    </a>
+                    <a href="https://www.cvmbs.colostate.edu/clinical-sciences/" class="link-item" target="_blank">
+                        <span class="link-icon">🎓</span>
+                        <span class="link-text">CSU兽医学院 - 临床科学</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 动物解剖与生理 -->
+            <div class="category-card">
+                <div class="category-header">
+                    <div class="category-icon">🦴</div>
+                    <h2 class="category-title">动物解剖与生理</h2>
+                </div>
+                <div class="links-grid">
+                    <a href="https://www.anatomography.jp/" class="link-item" target="_blank">
+                        <span class="link-icon">🔍</span>
+                        <span class="link-text">Anatomography - 动物解剖图谱</span>
+                    </a>
+                    <a href="https://www.vivo.colostate.edu/hbooks/index.html" class="link-item" target="_blank">
+                        <span class="link-icon">📚</span>
+                        <span class="link-text">Hill's兽医生理学</span>
+                    </a>
+                    <a href="https://www.visiblebody.com/" class="link-item" target="_blank">
+                        <span class="link-icon">👁️</span>
+                        <span class="link-text">Visible Body - 可视化解剖学</span>
+                    </a>
+                    <a href="https://www.3dscience.com/" class="link-item" target="_blank">
+                        <span class="link-icon">3D</span>
+                        <span class="link-text">3D科学 - 动物结构模型</span>
+                    </a>
+                    <a href="https://www.animaldiversity.org/" class="link-item" target="_blank">
+                        <span class="link-icon">🐾</span>
+                        <span class="link-text">ADW - 动物多样性网站</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 动物疾病与治疗 -->
+            <div class="category-card">
+                <div class="category-header">
+                    <div class="category-icon">💉</div>
+                    <h2 class="category-title">动物疾病与治疗</h2>
+                </div>
+                <div class="links-grid">
+                    <a href="https://www.diseasesdatabase.com/" class="link-item" target="_blank">
+                        <span class="link-icon">📊</span>
+                        <span class="link-text">疾病数据库 - 兽医版</span>
+                    </a>
+                    <a href="https://www.vetstream.com/" class="link-item" target="_blank">
+                        <span class="link-icon">💊</span>
+                        <span class="link-text">Vetstream - 兽医药物数据库</span>
+                    </a>
+                    <a href="https://www.vet.cornell.edu/departments-centers-and-institutes/department-of-microbiology-and-immunology" class="link-item" target="_blank">
+                        <span class="link-icon">🔬</span>
+                        <span class="link-text">康奈尔大学 - 微生物学与免疫学</span>
+                    </a>
+                    <a href="https://www.veterinarypathology.org/" class="link-item" target="_blank">
+                        <span class="link-icon">🔍</span>
+                        <span class="link-text">兽医病理学学会</span>
+                    </a>
+                    <a href="https://www.clinicaltrials.gov/ct2/results?cond=Veterinary" class="link-item" target="_blank">
+                        <span class="link-icon">📋</span>
+                        <span class="link-text">临床试验 - 兽医研究</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 实验动物 -->
+            <div class="category-card">
+                <div class="category-header">
+                    <div class="category-icon">🐭</div>
+                    <h2 class="category-title">实验动物</h2>
+                </div>
+                <div class="links-grid">
+                    <a href="https://www.jax.org/" class="link-item" target="_blank">
+                        <span class="link-icon">🐭</span>
+                        <span class="link-text">Jackson实验室 - 实验小鼠</span>
+                    </a>
+                    <a href="https://www.rrrc.us/" class="link-item" target="_blank">
+                        <span class="link-icon">🐭</span>
+                        <span class="link-text">RRRC - 实验大鼠资源中心</span>
+                    </a>
+                    <a href="https://www.zfin.org/" class="link-item" target="_blank">
+                        <span class="link-icon">🐠</span>
+                        <span class="link-text">ZFIN - 斑马鱼模型数据库</span>
+                    </a>
+                    <a href="https://flybase.org/" class="link-item" target="_blank">
+                        <span class="link-icon">🪰</span>
+                        <span class="link-text">FlyBase - 果蝇基因组数据库</span>
+                    </a>
+                    <a href="https://www.wormbase.org/" class="link-item" target="_blank">
+                        <span class="link-icon">🐛</span>
+                        <span class="link-text">WormBase - 线虫数据库</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 页脚 -->
+        <footer class="footer">
+            <p>生物专业资源导航 - 为生物学习者和研究者提供便利</p>
+            <p>持续更新中，欢迎推荐优质资源🎉</p>
+        </footer>
+    </div>
+    <!-- 在现有的彩蛋内容中添加以下代码 -->
+
+<!-- 新彩蛋：快速点击触发的浮动彩蛋
+<div id="floatingEgg" class="floating-egg" style="display: none;">
+    <div class="floating-egg-content">
+        <h3>✨ 隐藏惊喜</h3>
+        <p>你发现了隐藏的快速点击彩蛋！</p>
+        <p>只有最细心的用户才能找到它！</p>
+        <button class="close-btn" onclick="closeFloatingEgg()">关闭</button>
+    </div>
+</div>
+
+<script>
+// 在现有JavaScript代码中添加以下内容
+
+// 新彩蛋：快速点击触发的浮动彩蛋
+let clickCount = 0;
+let clickTimer;
+let clickPosition = {x: 0, y: 0};
+
+document.addEventListener('click', function(e) {
+    // 记录点击位置
+    clickPosition.x = e.clientX;
+    clickPosition.y = e.clientY;
+    
+    clickCount++;
+    
+    if (clickTimer) {
+        clearTimeout(clickTimer);
+    }
+    
+    clickTimer = setTimeout(() => {
+        clickCount = 0;
+    }, 300); // 300ms内快速点击
+    
+    if (clickCount === 3) {
+        // 触发浮动彩蛋
+        showFloatingEgg();
+        clickCount = 0;
+    }
+});
+
+function showFloatingEgg() {
+    const floatingEgg = document.getElementById('floatingEgg');
+    floatingEgg.style.display = 'block';
+    
+    // 将彩蛋定位到点击位置附近
+    floatingEgg.style.left = (clickPosition.x - 100) + 'px';
+    floatingEgg.style.top = (clickPosition.y - 50) + 'px';
+}
+
+function closeFloatingEgg() {
+    document.getElementById('floatingEgg').style.display = 'none';
+}
+
+// 添加浮动彩蛋的CSS样式
+const floatingEggStyle = document.createElement('style');
+floatingEggStyle.textContent = `
+    .floating-egg {
+        position: absolute;
+        z-index: 10002;
+        background: rgba(40, 40, 60, 0.95);
+        border: 2px solid #4CAF50;
+        border-radius: 10px;
+        padding: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        animation: floatIn 0.5s ease-out;
+        min-width: 200px;
+        color: white;
+    }
+    
+    .floating-egg-content {
+        text-align: center;
+    }
+    
+    .floating-egg h3 {
+        margin-top: 0;
+        color: #4CAF50;
+        margin-bottom: 10px;
+    }
+    
+    .floating-egg p {
+        margin: 8px 0;
+        font-size: 0.9em;
+    }
+    
+    @keyframes floatIn {
+        0% { 
+            opacity: 0; 
+            transform: scale(0.8) translateY(20px);
+        }
+        100% { 
+            opacity: 1; 
+            transform: scale(1) translateY(0);
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .floating-egg {
+            min-width: 180px;
+            padding: 12px;
+            font-size: 0.9em;
+        }
+        
+        .floating-egg h3 {
+            font-size: 1.2em;
+        }
+        
+        .floating-egg p {
+            font-size: 0.8em;
+        }
+    }
+`; -->
+ <!-- document.head.appendChild(floatingEggStyle);
+ </script> -->
+
+     神秘链接
+     <div class="mystery-link" id="mysteryLink" title="点击我有惊喜"></div>
+
+     <script>
+        // 页面加载完成后自动处理提示
+        document.addEventListener('DOMContentLoaded', function() {
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            const neverShowAgainCheckbox = document.getElementById('neverShowAgain');
+            
+            // 检查是否已设置不再显示
+            const hasNeverShowAgain = localStorage.getItem('neverShowLoading');
+            if (hasNeverShowAgain === 'true') {
+                // 如果已设置不再显示，直接隐藏加载提示
+                loadingOverlay.classList.add('hidden');
+                return;
+            }
+            
+            // 4秒后自动淡出并隐藏
+            setTimeout(function() {
+                // 保存不再显示的设置
+                if (neverShowAgainCheckbox.checked) {
+                    localStorage.setItem('neverShowLoading', 'true');
+                }
+                
+                // 添加淡出动画
+                loadingOverlay.classList.add('fade-out');
+                
+                // 动画结束后隐藏元素
+                setTimeout(function() {
+                    loadingOverlay.classList.add('hidden');
+                }, 500);
+            }, 4000); // 4秒后执行
+        });
+
+//         // 彩蛋1: 点击页面任意位置出现涟漪效果
+//         document.addEventListener('click', function(e) {
+//             // 创建涟漪效果
+//             const ripple = document.createElement('div');
+//             ripple.className = 'click-effect';
+//             ripple.style.left = e.clientX + 'px';
+//             ripple.style.top = e.clientY + 'px';
+//             document.body.appendChild(ripple);
+            
+//             // 移除涟漪元素
+//             setTimeout(() => {
+//                 ripple.remove();
+//             }, 600);
+//         });
+
+//         // 彩蛋2: 神秘链接
+//         document.getElementById('mysteryLink').addEventListener('click', function() {
+//             showEasterEgg('神秘发现', '你找到了隐藏的彩蛋！这是一个特殊的页面，只有最细心的访客才能发现。');
+//         });
+
+//         // 彩蛋3: 快速点击logo 5次显示特殊消息
+//         let logoClickCount = 0;
+//         let logoClickTimeout;
+//         document.querySelector('.logo').addEventListener('click', function() {
+//             logoClickCount++;
+            
+//             if (logoClickTimeout) {
+//                 clearTimeout(logoClickTimeout);
+//             }
+            
+//             logoClickTimeout = setTimeout(() => {
+//                 logoClickCount = 0;
+//             }, 1000);
+            
+//             if (logoClickCount === 5) {
+//                 showEasterEgg('我很笨', '我很笨，理不清你对我的感受，琢磨半天只能说出让人感到模棱两可的傻话。可就是这样的傻劲让我不断地揣摩你的心思，想尽自己所能的满足你，可结果呢，却适得其反。');
+//                 logoClickCount = 0;
+//             }
+//         });
+        
+
+//         // 彩蛋4: 按特定键组合显示彩蛋
+//         let keySequence = [];
+//         const secretCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+        
+//         document.addEventListener('keydown', function(e) {
+//             keySequence.push(e.key);
+            
+//             // 保持序列长度不超过秘密代码长度
+//             if (keySequence.length > secretCode.length) {
+//                 keySequence.shift();
+//             }
+            
+//             // 检查是否匹配秘密代码
+//             if (keySequence.length === secretCode.length) {
+//                 let isMatch = true;
+//                 for (let i = 0; i < secretCode.length; i++) {
+//                     if (keySequence[i] !== secretCode[i]) {
+//                         isMatch = false;
+//                         break;
+//                     }
+//                 }
+                
+//                 if (isMatch) {
+//                     showEasterEgg('终局', '真没想到还是来到这里了吗，经历了那么多，来吧，来到这里，长话我们慢慢说。');
+//                     keySequence = []; // 重置序列
+//                 }
+//             }
+//         });
+
+//         // 彩蛋5: 在特定区域点击显示隐藏信息
+//         document.querySelector('.hero h1').addEventListener('click', function() {
+//             showEasterEgg('这是第一个彩蛋', '我们的第一次对视改写了我们人生太多的事，你会不会觉得我就是个变数。。但我对你并没这么想过');
+//         });
+
+//         // 彩蛋6: 鼠标悬停在链接上时的特殊效果
+//         document.querySelectorAll('.link-item').forEach(link => {
+//             link.addEventListener('mouseenter', function() {
+//                 // 添加一个随机的生物相关emoji
+//                 const emojis = ['🧬', '🦠', '🧫', '🔬', '🧪', '🧬', '🧶', '🧺'];
+//                 const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+                
+//                 // 创建一个临时的emoji元素
+//                 const emojiElement = document.createElement('span');
+//                 emojiElement.textContent = randomEmoji;
+//                 emojiElement.style.position = 'absolute';
+//                 emojiElement.style.fontSize = '1.5rem';
+//                 emojiElement.style.opacity = '0.7';
+//                 emojiElement.style.animation = 'pulse 1s infinite';
+                
+//                 // 随机位置
+//                 emojiElement.style.left = Math.random() * 100 + 'px';
+//                 emojiElement.style.top = Math.random() * 100 + 'px';
+                
+//                 this.appendChild(emojiElement);
+                
+//                 // 2秒后移除
+//                 setTimeout(() => {
+//                     if (emojiElement.parentNode) {
+//                         emojiElement.remove();
+//                     }
+//                 }, 2000);
+//             });
+//         });
+        
+
+//         // 显示彩蛋函数
+//         function showEasterEgg(title, message) {
+//             // 创建彩蛋元素
+//             const easterEgg = document.createElement('div');
+//             easterEgg.className = 'easter-egg';
+//             easterEgg.innerHTML = `
+//                 <h3>${title}</h3>
+//                 <p>${message}</p>
+//                 <button class="close-btn">关闭</button>
+//             `;
+            
+//             document.body.appendChild(easterEgg);
+            
+//             // 添加关闭事件
+//             easterEgg.querySelector('.close-btn').addEventListener('click', function() {
+//                 easterEgg.remove();
+//             });
+            
+//             // 5秒后自动移除
+//             setTimeout(() => {
+//                 if (easterEgg.parentNode) {
+//                     easterEgg.remove();
+//                 }
+//             }, 5000);
+//         }
+
+        // 搜索功能
+        document.querySelector('.search-box').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const linkItems = document.querySelectorAll('.link-item');
+            
+            linkItems.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+
+        // 平滑滚动效果
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
